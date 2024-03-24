@@ -4,8 +4,27 @@
 
 ### Summary
 
-This project containerizes a Rust Actix web application using Docker. 
+This project containerizes a Rust Actix web application using Docker and implements a CI/CD pipeline for formatting, linting, testing, and generating a docker image. For this project, the pipeline ends at a new docker image stored on a container registry service (DockerHub) after formatting, linting, and testing have all passed. Future iterations of this pipeline could automatically deploy the docker image to AWS Fargate, Azure App Services, or any other container deployment service.
 
+### Repository Structure
+
+```text
+Containerized-Rust-Microservice
+
+├── Cargo.lock
+├── Cargo.toml
+├── Dockerfile
+├── .github/workflows
+│   ├── format.yml
+│   ├── install.yml
+│   ├── tests.yml
+│   └── deploy.yml
+├── .gitignore
+├── Makefile
+├── README.md
+└── src
+    └── main.rs
+```
 ### Cargo Dependencies
 
 We've first initialized a new binary-based Cargo project called actix_app. The only additional crate required as a dependancy is the `actic-web` crate.
