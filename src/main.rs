@@ -1,28 +1,29 @@
 use actix_web::{get, post, web, App, HttpResponse, HttpServer, Responder};
+use serde::{Deserialize, Serialize};
 
-#[get("/")]
-async fn hello() -> impl Responder {
-    HttpResponse::Ok().body("Hello world!")
-}
-
-#[post("/echo")]
-async fn echo(req_body: String) -> impl Responder {
-    HttpResponse::Ok().body(req_body)
-}
-
-async fn manual_hello() -> impl Responder {
-    HttpResponse::Ok().body("Hey there!")
+#[derive(Serialize, Deserialize)]
+struct ToDoItem {
+    id: usize,
+    title: String,
+    completed: bool,
 }
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| {
+    let to_do_list = web::Data::new(Mutex::new(Vec::<ToDoItem>::new()));
+
+    HttpServer::new(move || {
         App::new()
-            .service(hello)
-            .service(echo)
-            .route("/hey", web::get().to(manual_hello))
+            .app_data(to_do_list.clone())
+            .route("/todos", web::post().to(add_to_do_item))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
     .await
+}
+
+async fn add_to_do_item(item: web::Json<ToDoItem>, to_do_list: web::Data<Mutex<Vec<ToDoItem>>>) -> impl Responder {
+    let mut list = to_do_list.lock().unwrap();
+    list.push(item.into_inner());
+    HttpResponse::Ok().json(list)
 }
