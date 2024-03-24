@@ -22,10 +22,10 @@ FROM debian:buster-slim
 WORKDIR /usr/src/app
 
 # Copy the compiled binary from the builder stage
-COPY --from=builder /usr/src/app/target/release/actix_app .
+COPY --from=builder /usr/src/app/target/release/containerized-rust-microservice .
 
 # Expose the port on which your Actix web service listens
 EXPOSE 8080
 
 # Command to run the binary when the container starts
-CMD ["./actix_app"]
+CMD ["./containerized-rust-microservice"]

@@ -1,7 +1,6 @@
 use actix_web::{web, App, HttpServer};
 use std::sync::Mutex;
 
-
 struct AppState {
     list: Mutex<Vec<String>>, // Using String as an example item type
 }
@@ -15,12 +14,8 @@ async fn main() -> std::io::Result<()> {
     HttpServer::new(move || {
         App::new()
             .app_data(shared_data.clone())
-            .service(
-                web::resource("/add").route(web::post().to(add_item))
-            )
-            .service(
-                web::resource("/list").route(web::get().to(get_list))
-            )
+            .service(web::resource("/add").route(web::post().to(add_item)))
+            .service(web::resource("/list").route(web::get().to(get_list)))
     })
     .bind(("127.0.0.1", 8080))?
     .run()
