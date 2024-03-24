@@ -1,10 +1,16 @@
-# Actix Web Application
+# Containerized Actix Microservice - Rust
+
+[![Format](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/format.yml/badge.svg)](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/format.yml)
+[![Lint](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/lint.yml/badge.svg)](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/lint.yml)
+[![Tests](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/tests.yml/badge.svg)](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/tests.yml)
+[![Deploy](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/deploy.yml/badge.svg)](https://github.com/matthold86/Containerized-Rust-Microservice/actions/workflows/deploy.yml)
+
 #### *By: Matthew Holden*
 
 
 ### Summary
 
-This project containerizes a Rust Actix web application using Docker and implements a CI/CD pipeline for formatting, linting, testing, and generating a docker image. For this project, the pipeline ends at a new docker image stored on a container registry service (DockerHub) after formatting, linting, and testing have all passed. Future iterations of this pipeline could automatically deploy the docker image to AWS Fargate, Azure App Services, or any other container deployment service.
+This project containerizes a Rust Actix microservice using Docker and implements a CI/CD pipeline for formatting, linting, testing, and automatically generating a docker image. For this project, the pipeline ends at a new docker image stored on a container registry service (DockerHub) after formatting, linting, and testing have all passed. Future iterations of this pipeline could automatically deploy the docker image to AWS Fargate, Azure App Services, or any other container deployment service.
 
 ### Repository Structure
 
