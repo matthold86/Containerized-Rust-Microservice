@@ -10,7 +10,9 @@
 
 ### Summary
 
-This project containerizes a Rust Actix microservice using Docker and implements a CI/CD pipeline for formatting, linting, testing, and automatically generating a docker image. For this project, the pipeline ends at a new docker image stored on a container registry service (DockerHub) after formatting, linting, and testing have all passed. Future iterations of this pipeline could automatically deploy the docker image to AWS Fargate, Azure App Services, or any other container deployment service.
+This project containerizes a Rust Actix microservice using Docker and implements a CI/CD pipeline for formatting, linting, testing, and automatically generating a docker image. For this project, the pipeline ends at a new docker image stored on a container registry service (DockerHub) after formatting, linting, and testing have all passed. Future iterations of this pipeline could automatically deploy the docker image to AWS Fargate, Azure App Services, or any other container deployment service. See the link below for a walkthrough and demonstration of the application.
+
+[Youtube: Containerized Rust Microservice](https://youtu.be/W2MgCYe_lNQ)
 
 ### Repository Structure
 
